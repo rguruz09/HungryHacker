@@ -33,7 +33,7 @@
 
 		<!-- HEADER AND TODO COUNT -->
 		<div class="jumbotron text-center">
-			<h1>I'm a Food-aholic <span class="label label-info">{{ foods.length }}</span></h1>
+			<h1>I'm a Hungry Hacker</h1>
 		</div>
 
 
@@ -42,8 +42,8 @@
       			<tr>
       				<th>Delete</th>
         			<th>Food name</th>
-        			<th>Item Description</th>
-        			<th>COst</th>
+        			<th>Description</th>
+        			<th>Cost</th>
       			</tr>
     		</thead>
     		<tbody>
@@ -69,19 +69,35 @@
     		</tbody>
   		</table>
 
-
+  		<br>
   		
+
+  		<div class = "btn-primary pull-left " ng-hide=badd >
+			<button type="button" class="btn btn-primary btn-sh" ng-click="showForm()">Add more food</button>				  
+  		</div>
+
+  		<div align="center">
+  			<button type="button" class="btn btn-primary btn-sh" ng-click="getTotal()" ng-hide=bcalc>Find Total</button>		
+  			<div class="col-xs-3 pull-right" ng-hide=!showblc>
+  				<input class="form-control" id="ex3" type="text" ng-model="ttlCost" disabled>
+			</div>	
+			<br>
+  		</div> 
+
+  		<br>
+  		<br>
+  			
   		
 		<!-- FORM TO CREATE TODOS -->
-		<div id="food-form" class="row">
+		<div id="food-form" class="row" ng-class="{ 'has-error': userForm.email.$invalid && userForm.email.$dirty }"  ng-hide=!badd>
 			<div class="col-sm-8 col-sm-offset-2 text-center">
 				<form>
 					<div class="form-group">
 
 						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-						<input type="text" class="form-control input-lg text-center" placeholder="Food item name" ng-model="formData.food_name">
-						<input type="text" class="form-control input-lg text-center" placeholder="Food item Desc" ng-model="formData.food_desc">
-						<input type="text" class="form-control input-lg text-center" placeholder="Food item cost" ng-model="formData.food_cost">
+						<input type="text" class="form-control input-lg text-center" placeholder="Food item name" ng-model="formData.food_name" required>
+						<input type="text" class="form-control input-lg text-center" placeholder="Food item Desc" ng-model="formData.food_desc" required>
+						<input type="number" class="form-control input-lg text-center" placeholder="Food item cost" ng-model="formData.food_cost" required>
 					</div>
 
 					<!-- createToDo() WILL CREATE NEW TODOS -->
@@ -89,12 +105,6 @@
 				</form>
 			</div>
 		</div>
-
-		<div class="text-center text-muted">
-			<p>A demo by <a href="http://scotch.io">Scotch</a>.</p>
-			<p>Read the <a href="http://scotch.io/tutorials/javascript/creating-a-single-page-todo-app-with-node-and-angular">tutorial</a>.</p>
-		</div>
-
 	</div>
 
 </body>
