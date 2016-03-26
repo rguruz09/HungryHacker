@@ -1,0 +1,9 @@
+As part of bonus phase, i implemented the open source messaging interface 'rabbitMQ'. 
+
+RabbitMQ is a messaging interface which provides number of advantages when it comes to consistency and scalability of the application.
+Messages are routed through exchanges before arriving at queues. RabbitMQ features several built-in exchange types for typical routing logic. 
+
+For this application i have created 3 different queues for 3 different operations. Each queue will hold the request/response messages to and from nodeJS server to MongoDB server.
+By which i can decouple the server and in future it will be easy to horizontaly scale the application.
+ 
+
